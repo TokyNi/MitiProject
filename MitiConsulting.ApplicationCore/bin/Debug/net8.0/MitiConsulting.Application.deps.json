@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MitiConsulting.Application/1.0.0": {
+        "dependencies": {
+          "MitiConsulting.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MitiConsulting.Application.dll": {}
+        }
+      },
+      "MitiConsulting.Domain/1.0.0": {
+        "runtime": {
+          "MitiConsulting.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MitiConsulting.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MitiConsulting.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

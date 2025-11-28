@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:MitiConsulting.UI.Views"
+        x:Class="MitiConsulting.UI.Views.MainWindow" 
+        Title="MitiConsulting.UI"
+        >
+    
+    <Window.Resources> 
+        <Thickness x:Key="SectionMargin">0,30,0,15</Thickness>
+    </Window.Resources>
+    
+    <Window.Styles>
+        <Style Selector="TextBlock.SectionHeader">
+            <Setter Property="FontSize" Value="20"/>
+            </Style>
+    </Window.Styles>
+
+    <views:MissionReportView/> 
+</Window>
