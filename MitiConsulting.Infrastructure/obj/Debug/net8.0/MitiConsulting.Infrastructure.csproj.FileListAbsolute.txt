@@ -15,3 +15,4 @@
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/refint/MitiConsulting.Infrastructure.dll
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.pdb
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/ref/MitiConsulting.Infrastructure.dll
+/home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.sourcelink.json

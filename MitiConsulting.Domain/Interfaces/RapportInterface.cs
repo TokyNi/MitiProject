@@ -8,10 +8,10 @@ using MitiConsulting.Domain.Models;
 namespace MitiConsulting.Domain.Interfaces{
     public interface IRapportRepository
     {
-        Task <List<Rapport>> GetRapportAsync(int pageNum); // pour la pagination 
-        Task <Rapport> AjoutRapportAsync(Rapport rapport) ;
+        Task <List<Rapport>?> GetRapportAsync(int pageNum); // pour la pagination 
+        Task <Rapport?> AjoutRapportAsync(Rapport rapport) ;
         Task <Rapport?> ModiferRapportAsync(Rapport rapport);
-        Task <Rapport> GetRapportByIdAsync(int id);
+        Task <Rapport?> GetRapportByIdAsync(int id);
         //Recherche (à faire)
     }
 }

@@ -1,10 +1,235 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="MitiConsulting.UI.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-
+             RequestedThemeVariant="Light">
+     <Application.Resources>
+        <!-- Ressources déplacées depuis UserControl.Resources -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="DarkGrayBorder" Color="#757575"/>
+        <SolidColorBrush x:Key="DarkGrayBackground" Color="#F0EEE9"/>
+        <SolidColorBrush x:Key="DarkGrayText" Color="#424242"/>
+        <SolidColorBrush x:Key="ButtonBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="GrayText" Color="#616161"/>
+        <SolidColorBrush x:Key="BlackLabel" Color="#212121"/>
+        <SolidColorBrush x:Key="RequiredField" Color="#D32F2F"/>
+        <Thickness x:Key="SectionMargin">0,30,0,15</Thickness>
+    </Application.Resources>
     <Application.Styles>
+        <!-- 1. Thème de base d'Avalonia -->
         <FluentTheme />
+        
+        <!-- 2. Styles personnalisés : Encapsulés dans le tag <Styles> -->
+        <Styles>
+            <!-- Style Liste -->
+            <!-- TEXT BLOCK STYLES -->
+            <Style Selector="TextBlock.header-title">
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="FontWeight" Value="600"/>
+                <Setter Property="Foreground" Value="#1976D2"/>
+                <Setter Property="Margin" Value="0,0,0,28"/>
+            </Style>
+            
+            <!-- PRIMARY BUTTON STYLES (Utilise Button.primary-btn) -->
+            <Style Selector="Button.primary-btn">
+                <Setter Property="Background" Value="#137C8B"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontWeight" Value="500"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="CornerRadius" Value="6"/>
+                <Setter Property="Padding" Value="16,10"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            
+            <!-- IMPORTANT: Ciblez le ContentPresenter pour garantir la couleur de fond 
+                 par-dessus le thème Fluent, en utilisant une syntaxe plus spécifique si nécessaire. -->
+            <Style Selector="Button.primary-btn /template/ ContentPresenter">
+                <Setter Property="Background" Value="#1976D2"/>
+                <Setter Property="BorderBrush" Value="#1976D2"/>
+                <Setter Property="Foreground" Value="White"/>
+
+            </Style>
+
+            <Style Selector="Button.primary-btn:hover /template/ ContentPresenter">
+                <Setter Property="Background" Value="#2563EB"/>
+            </Style>
+            
+            <Style Selector="Button.primary-btn:pressed /template/ ContentPresenter">
+                <Setter Property="Background" Value="#1D4ED8"/>
+            </Style>
+            
+            <!-- BORDER STYLES -->
+            <Style Selector="Border.table-card">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BoxShadow" Value="0 2 4 #1F29370A"/>
+            </Style>
+            
+            <Style Selector="Border.table-header">
+                <Setter Property="Background" Value="#F9FAFB"/>
+                <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="Height" Value="52"/>
+            </Style>
+            
+            <!-- TEXT STYLES for Table -->
+            <Style Selector="TextBlock.table-header-text">
+                <Setter Property="FontWeight" Value="600"/>
+                <Setter Property="Foreground" Value="#374151"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            
+            <!-- ROW STYLES -->
+            <Style Selector="Border.table-row">
+                <Setter Property="BorderBrush" Value="#F3F4F6"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="Background" Value="White"/>
+            </Style>
+            
+            <Style Selector="Border.table-row:pointerover">
+                <Setter Property="Background" Value="#F9FAFB"/>
+            </Style>
+            
+            <!-- CELL TEXT STYLES -->
+            <Style Selector="TextBlock.table-cell">
+                <Setter Property="Foreground" Value="#1F2937"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            
+            <Style Selector="TextBlock.year-cell">
+                <Setter Property="Foreground" Value="#1F2937"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="500"/>
+            </Style>
+            
+            <!-- PAGINATION BUTTON STYLES -->
+            <Style Selector="Button.page-btn">
+                <Setter Property="Background" Value="#F9FAFB"/>
+                <Setter Property="Foreground" Value="#6B7280"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="#D1D5DB"/>
+                <Setter Property="CornerRadius" Value="6"/>
+                <Setter Property="MinWidth" Value="44"/>
+                <Setter Property="Height" Value="44"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="16,12"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Style>
+            
+            <Style Selector="Button.page-btn:hover">
+                <Setter Property="Background" Value="#F9FAFB"/>
+                <Setter Property="BorderBrush" Value="#9CA3AF"/>
+                <Setter Property="Foreground" Value="#4B5563"/>
+            </Style>
+            
+            <Style Selector="Button.page-btn:disabled /template/ ContentPresenter">
+                <Setter Property="Background" Value="#F3F4F6"/>
+                <Setter Property="Foreground" Value="#9CA3AF"/>
+                <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                <Setter Property="Cursor" Value="Arrow"/>
+            </Style>
+            
+            <Style Selector="TextBlock.pagination-info">
+                <Setter Property="Foreground" Value="#6B7280"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+            
+        <!-- Style Formulaire -->
+        <Style Selector="TextBlock.MainTitle">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+        </Style>
+        
+        <Style Selector="TextBlock.SectionHeader">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="{StaticResource SectionMargin}"/>
+            <Setter Property="Foreground" Value="{StaticResource BlackLabel}"/> 
+        </Style>
+        
+        <Style Selector="TextBlock.FieldLabel">
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource BlackLabel}"/>
+        </Style>
+        
+        <!-- Style pour les TextBox avec fond gris foncé - Pas d'effet hover -->
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{StaticResource DarkGrayBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+        <!-- Désactiver tous les effets hover sur les TextBox -->
+        <Style Selector="TextBox:pointerover">
+            <Setter Property="Background" Value="{StaticResource DarkGrayBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBorder}"/>
+        </Style>
+        
+        <Style Selector="TextBox:focus">
+            <Setter Property="Background" Value="{StaticResource DarkGrayBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBorder}"/>
+        </Style>
+        
+        <Style Selector="TextBox:focus-visible">
+            <Setter Property="Background" Value="{StaticResource DarkGrayBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBorder}"/>
+        </Style>
+        
+        <Style Selector="TextBox:pressed">
+            <Setter Property="Background" Value="{StaticResource DarkGrayBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBorder}"/>
+        </Style>
+        
+        <!-- Style pour le watermark (placeholder) -->
+        <Style Selector="TextBox /template/ ContentPresenter#Watermark">
+            <Setter Property="Foreground" Value="{StaticResource GrayText}"/>
+        </Style>
+        
+        <!-- Style pour l'ombre du formulaire -->
+        <Style Selector="Border#FormContainer">
+            <Setter Property="BoxShadow" Value="0 5 15 0 #1A000000"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="30"/>
+        </Style>
+        
+        <!-- Style pour le texte "Champs obligatoires" -->
+        <Style Selector="TextBlock.RequiredFieldText">
+            <Setter Property="Foreground" Value="{StaticResource RequiredField}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+        <!-- Désactiver les effets hover sur DatePicker et NumericUpDown également -->
+        <Style Selector="DatePicker:pointerover">
+            <Setter Property="Background" Value="#F0EEE9"/>
+            <Setter Property="BorderBrush" Value="#757575"/>
+        </Style>
+        
+        <Style Selector="DatePicker:focus">
+            <Setter Property="Background" Value="#F0EEE9"/>
+            <Setter Property="BorderBrush" Value="#757575"/>
+        </Style>
+        
+        <Style Selector="NumericUpDown:pointerover">
+            <Setter Property="Background" Value="#F0EEE9"/>
+            <Setter Property="BorderBrush" Value="#757575"/>
+        </Style>
+        
+        <Style Selector="NumericUpDown:focus">
+            <Setter Property="Background" Value="#F0EEE9"/>
+            <Setter Property="BorderBrush" Value="#757575"/>
+        </Style>
+    
+        </Styles>
     </Application.Styles>
 </Application>

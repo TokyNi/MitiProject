@@ -16,12 +16,12 @@ public class RapportService :IRapportRepository
         _context = context;
         _mapper = mapper;   
     }
-    public async Task <List<Rapport>> GetRapportAsync(int pageNum){
+    public async Task <List<Rapport>?> GetRapportAsync(int pageNum){
         int pageSize = 10;
         var entities = await _context.Rapports
         .Select( r => new {
             IdRapport = r.IdRapport,
-            NomClient = r.NomClient,
+            NomClient = r.NomRapport,
             AnneeDebut = r.AnneeDebut
         })
         .OrderBy(r => r.AnneeDebut) // ordre des Année
@@ -32,7 +32,7 @@ public class RapportService :IRapportRepository
         //Afficher uniquement les attributs à afficher dans la liste
         return _mapper.Map<List<Rapport>>(entities);
     }
-    public async Task<Rapport> AjoutRapportAsync(Rapport creatRapportDto){
+    public async Task<Rapport?> AjoutRapportAsync(Rapport creatRapportDto){
         //convertion de DTO en EF core avec id = 0 ou null 
         var entity = _mapper.Map<Rapport>(creatRapportDto);
         //methode add pour ajouter
@@ -42,7 +42,7 @@ public class RapportService :IRapportRepository
        //mapper l'entite et le retounr en dto  avec l'id
         return _mapper.Map<Rapport>(entity);
     }
-    public async Task<Rapport> GetRapportByIdAsync(int id){
+    public async Task<Rapport?> GetRapportByIdAsync(int id){
         var entity =  await _context.Rapports.FindAsync(id);
         // await _context.SaveChangesAsync();
         return _mapper.Map<Rapport>(entity);

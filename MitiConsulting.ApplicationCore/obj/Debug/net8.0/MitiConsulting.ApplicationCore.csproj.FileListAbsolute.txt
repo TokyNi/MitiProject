@@ -8,6 +8,7 @@
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.AssemblyInfoInputs.cache
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.AssemblyInfo.cs
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.csproj.CoreCompileInputs.cache
+/home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.sourcelink.json
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.csproj.CopyComplete
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/MitiConsulting.ApplicationCore.dll
 /home/tokyniaina/MitiProject/MitiConsulting.ApplicationCore/obj/Debug/net8.0/refint/MitiConsulting.ApplicationCore.dll

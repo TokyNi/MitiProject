@@ -2,154 +2,270 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:MitiConsulting.UI.ViewModels"
+             xmlns:vm="clr-namespace:MitiConsulting.UI.ViewModels"  
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
              x:Class="MitiConsulting.UI.Views.MissionReportView"
-             x:DataType="vm:RapportViewModel">
-
-    <UserControl.Resources>
-        <SolidColorBrush x:Key="PathIconFillColor" Color="#1976D2"/> 
-        
-        <Thickness x:Key="SectionMargin">0,30,0,15</Thickness>
-    </UserControl.Resources>
-
-    <UserControl.Styles>
-        <Style Selector="TextBlock.SectionHeader">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="{StaticResource SectionMargin}"/>
-            <Setter Property="Foreground" Value="{StaticResource PathIconFillColor}"/> 
-        </Style>
-        <Style Selector="TextBlock.FieldLabel">
-            <Setter Property="Margin" Value="0,5,0,5"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-        </Style>
-    </UserControl.Styles>
+             x:DataType="vm:RapportViewModel"
+             Background="White">
 
     <ScrollViewer>
-        <StackPanel Margin="20">
+        <!-- Grid avec une colonne centrée pour simuler le 90% -->
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/> <!-- 5% de chaque côté -->
+                <ColumnDefinition Width="75*"/> <!-- 90% pour le formulaire -->
+                <ColumnDefinition Width="15*"/> <!-- 5% de chaque côté -->
+            </Grid.ColumnDefinitions>
             
-            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
-                <!-- <PathIcon Data="M22 6H12L10 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V8C22 6.9 21.1 6 20 6H22Z" 
-                          Width="28" Height="28" Fill="{StaticResource PathIconFillColor}"/> -->
-                <StackPanel>
-                    <TextBlock Text="Formulaire de Rapport de Mission" FontSize="26" FontWeight="Bold"/>
-                    <TextBlock Text="Remplissez les informations ci-dessous pour documenter la mission" Opacity="0.7"/>
-                </StackPanel>
-            </StackPanel>
-
-            <Separator Margin="0,0,0,10"/>
-            
-            <TextBlock Text="Informations sur la mission" Classes="SectionHeader"/>
-            
-            <Grid ColumnDefinitions="*, 20, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="15" ColumnSpacing="20">
+            <!-- Conteneur principal avec ombre -->
+            <Border Grid.Column="1" MaxWidth="1200" HorizontalAlignment="Stretch"
+                    x:Name="FormContainer">
                 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="1. Nom de la mission *" Classes="FieldLabel"/>
-                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Watermark="Entrez le nom de la mission" 
-                         Text="{Binding NomRapport}"/>
-
-                <StackPanel Grid.Row="2" Grid.Column="0">
-                    <TextBlock Text="2. Pays *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Ex: Madagascar" Text="{Binding Pays}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Grid.Column="2">
-                    <TextBlock Text="8. Lieu de la mission *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Ex: Tsy haiko izay atao eto" Text="{Binding LieuxMission}"/>
-                </StackPanel>
-
-                <StackPanel Grid.Row="3" Grid.Column="0">
-                    <TextBlock Text="3. Année de début *" Classes="FieldLabel"/>
-                    <NumericUpDown Value="{Binding AnneeDebut}" FormatString="0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="3" Grid.Column="2">
-                    <TextBlock Text="4. Année de fin" Classes="FieldLabel"/>
-                    <NumericUpDown Value="{Binding AnneeFin}" FormatString="0"/>
-                </StackPanel>
-            </Grid>
-            
-            <Grid ColumnDefinitions="*, 20, *" RowDefinitions="Auto, Auto" RowSpacing="15" ColumnSpacing="20" Margin="0,15,0,0">
-                
-                <StackPanel Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="13. Date de démarrage *" Classes="FieldLabel"/>
-                    <DatePicker SelectedDate="{Binding DateDebut}" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="2">
-                    <TextBlock Text="14. Date d'achèvement" Classes="FieldLabel"/>
-                    <DatePicker SelectedDate="{Binding DateFin}" VerticalAlignment="Center"/>
-                </StackPanel>
-                
-                <StackPanel Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="11. Nombre de mois de travail" Classes="FieldLabel"/>
-                    <NumericUpDown Value="{Binding NombreMoisTravail}" FormatString="0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="2">
-                    <TextBlock Text="12. Nombre de mois de mission" Classes="FieldLabel"/>
-                    <NumericUpDown Value="{Binding NombreMoisMission}" FormatString="0"/>
-                </StackPanel>
-            </Grid>
-            
-            <Separator Margin="0,30,0,10"/>
-
-            <TextBlock Text="Informations client" Classes="SectionHeader"/>
-            
-            <StackPanel Spacing="15">
-                <StackPanel>
-                    <TextBlock Text="5. Nom du client *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Nom de l'entreprise ou organisation" Text="{Binding NomClient}"/>
-                </StackPanel>
-                
-                <StackPanel>
-                    <TextBlock Text="6. Adresse *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Adresse complète du client" AcceptsReturn="True" Height="70" Text="{Binding Adresse}"/>
-                </StackPanel>
-            </StackPanel>
-            
-            <Separator Margin="0,30,0,10"/>
-
-            <TextBlock Text="Ressources et financement" Classes="SectionHeader"/>
-            
-            <StackPanel Spacing="15">
-                <StackPanel>
-                    <TextBlock Text="7. Personnel spécialisé fourni" Classes="FieldLabel"/>
-                    <TextBox Watermark="Liste du personnel spécialisé fourni pour cette mission" AcceptsReturn="True" Height="70" Text="{Binding Financement}"/>
-                </StackPanel>
-
-                <Grid ColumnDefinitions="*, 20, *" ColumnSpacing="20">
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="9. Nombre d'employés participants" Classes="FieldLabel"/>
-                        <NumericUpDown Value="{Binding NombreEmploye}" FormatString="0"/>
+                <StackPanel Margin="0">
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,30">
+                        <StackPanel>
+                            <TextBlock Text="Formulaire de Fiche de Projet" Classes="MainTitle"/>
+                            <TextBlock Text="Remplissez les informations ci-dessous pour documenter la mission" 
+                                       Foreground="{StaticResource BlackLabel}" 
+                                       Opacity="0.7" Margin="0,5,0,0"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <TextBlock Text="15. Nom du consultant associé" Classes="FieldLabel"/>
-                        <TextBox Text="{Binding NomAssocie}"/>
+
+                    <Separator Margin="0,0,0,15" Background="{StaticResource DarkGrayBorder}"/>
+                    
+                    <TextBlock Text="Informations sur la mission" Classes="SectionHeader"/>
+                    
+                    <Grid ColumnDefinitions="*, 20, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="15" ColumnSpacing="20">
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="1. Nom de la mission *" Classes="FieldLabel"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Watermark="Entrez le nom de la mission" 
+                                 Text="{Binding NomRapport}"/>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock Text="2. Pays *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Ex: Madagascar" Text="{Binding Pays}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="2">
+                            <TextBlock Text="8. Lieu de la mission *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Ex: Tsy haiko izay atao eto" Text="{Binding LieuxMission}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0">
+                            <TextBlock Text="3. Année de début *" Classes="FieldLabel"/>
+                            <NumericUpDown Watermark="Ex:2024" Value="{Binding AnneeDebut}" FormatString="0">
+                                <NumericUpDown.Styles>
+                                    <Style Selector="NumericUpDown">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </NumericUpDown.Styles>
+                            </NumericUpDown>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="2">
+                            <TextBlock Text="4. Année de fin" Classes="FieldLabel"/>
+                            <NumericUpDown Watermark="Ex:2025" Value="{Binding AnneeFin}" FormatString="0">
+                                <NumericUpDown.Styles>
+                                    <Style Selector="NumericUpDown">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </NumericUpDown.Styles>
+                            </NumericUpDown>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*, 20, *" RowDefinitions="Auto, Auto" RowSpacing="15" ColumnSpacing="20" Margin="0,15,0,0">
+                        
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="13. Date de démarrage *" Classes="FieldLabel"/>
+                            <DatePicker SelectedDate="{Binding DateDebut}" VerticalAlignment="Center">
+                                <DatePicker.Styles>
+                                    <Style Selector="DatePicker">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </DatePicker.Styles>
+                            </DatePicker>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="2">
+                            <TextBlock Text="14. Date d'achèvement" Classes="FieldLabel"/>
+                            <DatePicker SelectedDate="{Binding DateFin}" VerticalAlignment="Center">
+                                <DatePicker.Styles>
+                                    <Style Selector="DatePicker">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </DatePicker.Styles>
+                            </DatePicker>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Row="1" Grid.Column="0">
+                            <TextBlock Text="11. Nombre de mois de travail" Classes="FieldLabel"/>
+                            <NumericUpDown Watermark="Ex:3" Value="{Binding NombreMoisTravail}" FormatString="0">
+                                <NumericUpDown.Styles>
+                                    <Style Selector="NumericUpDown">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </NumericUpDown.Styles>
+                            </NumericUpDown>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="2">
+                            <TextBlock Text="12. Nombre de mois de mission" Classes="FieldLabel"/>
+                            <NumericUpDown Watermark="Ex:3" Value="{Binding NombreMoisMission}" FormatString="0">
+                                <NumericUpDown.Styles>
+                                    <Style Selector="NumericUpDown">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </NumericUpDown.Styles>
+                            </NumericUpDown>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
+
+                    <TextBlock Text="Informations client" Classes="SectionHeader"/>
+                    
+                    <StackPanel Spacing="15">
+                        <StackPanel>
+                            <TextBlock Text="5. Nom du client *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Nom de l'entreprise ou organisation" Text="{Binding NomClient}"/>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <TextBlock Text="6. Adresse *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Adresse complète du client" AcceptsReturn="True" Height="70" Text="{Binding Adresse}"/>
+                        </StackPanel>
                     </StackPanel>
-                </Grid>
-            </StackPanel>
+                    
+                    <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
 
-            <Separator Margin="0,30,0,10"/>
+                    <TextBlock Text="Sources de financement" Classes="SectionHeader"/>
+                    
+                    <StackPanel Spacing="15">
+                        <StackPanel>
+                            <TextBlock Text="7. Personnel spécialisé fourni" Classes="FieldLabel"/>
+                            <TextBox Watermark="Liste du personnel spécialisé fourni pour cette mission" AcceptsReturn="True" Height="70" Text="{Binding Financement}"/>
+                        </StackPanel>
 
-            <TextBlock Text="Description de la mission" Classes="SectionHeader"/>
-            
-            <StackPanel Spacing="15">
-                <StackPanel>
-                    <TextBlock Text="17. Description du projet *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Décrivez en détail le projet et ses objectifs..." AcceptsReturn="True" Height="100" Text="{Binding DescriptifProjet}"/>
+                        <Grid ColumnDefinitions="*, 20, *" ColumnSpacing="20">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="9. Nombre d'employés participants" Classes="FieldLabel"/>
+                                <NumericUpDown Watermark ="Ex:6" Value="{Binding NombreEmploye}" FormatString="0">
+                                    <NumericUpDown.Styles>
+                                        <Style Selector="NumericUpDown">
+                                            <Setter Property="Background" Value="#E0E0E0"/>
+                                            <Setter Property="BorderBrush" Value="#757575"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                            <Setter Property="Padding" Value="10"/>
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                            <Setter Property="Foreground" Value="#424242"/>
+                                        </Style>
+                                    </NumericUpDown.Styles>
+                                </NumericUpDown>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="15. Nom du consultant associé" Classes="FieldLabel"/>
+                                <TextBox Watermark="Ex:Unicef" Text="{Binding NomAssocie}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
+
+                    <TextBlock Text="Description de la mission" Classes="SectionHeader"/>
+                    
+                    <StackPanel Spacing="15">
+                        <StackPanel>
+                            <TextBlock Text="17. Description du projet *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Décrivez en détail le projet et ses objectifs..." AcceptsReturn="True" Height="100" Text="{Binding DescriptifProjet}"/>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <TextBlock Text="18. Description des actvités réalisées *" Classes="FieldLabel"/>
+                            <TextBox Watermark="Décrivez les services et prestations qui ont été réalisés..." AcceptsReturn="True" Height="100" Text="{Binding DescriptionServices}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
+
+                    <StackPanel Margin="0,30,0,0" HorizontalAlignment="Center" Spacing="15">
+                        <!-- Bouton Soumettre -->
+                       <Grid Margin="0,30,0,0" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+    
+                    <!-- Bouton Soumettre -->
+                    <Button Grid.Column="0"
+                            Content="🚀 Soumettre le rapport" 
+                            Classes="primary-btn"
+                            Command="{Binding AjouterRapport}"
+                            Height="45"
+                            Background="Black"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="15"
+                            CornerRadius="4"
+                            BorderThickness="0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            HorizontalAlignment="Stretch"/>
+                    
+                    <!-- Bouton Annuler -->
+                    <Button Grid.Column="2"
+                            Content="Annuler"
+                            Height="45"
+                            Background="Transparent"
+                            Foreground="{StaticResource BlackLabel}"
+                            BorderBrush="{StaticResource DarkGrayBorder}"
+                            BorderThickness="2"
+                            FontWeight="SemiBold"
+                            FontSize="15"
+                            CornerRadius="4"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            HorizontalAlignment="Stretch"/>
+                    
+                    <!-- Texte "Champs obligatoires" aligné à droite -->
+                    </Grid>
+                        
+                        <!-- Texte "Champs obligatoires" -->
+                        <TextBlock Text="* Champs obligatoires" 
+                                   Classes="RequiredFieldText"/>
+                    </StackPanel>
+
                 </StackPanel>
-                
-                <StackPanel>
-                    <TextBlock Text="18. Description des services effectivement rendus *" Classes="FieldLabel"/>
-                    <TextBox Watermark="Décrivez les services et prestations qui ont été réalisés..." AcceptsReturn="True" Height="100" Text="{Binding DescriptionServices}"/>
-                </StackPanel>
-            </StackPanel>
-            
-            <Separator Margin="0,30,0,10"/>
-
-            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center" Margin="0,20,0,0">
-                <Button Content="🚀 Soumettre le rapport" Classes="Accent" HorizontalAlignment="Left" Width="200"
-                        Command="{Binding AjouterRapport}"/>
-                <Button Content="Annuler" HorizontalAlignment="Left" Theme="{StaticResource FlatButton}"/>
-            </StackPanel>
-
-        </StackPanel>
+            </Border>
+        </Grid>
     </ScrollViewer>
 </UserControl>

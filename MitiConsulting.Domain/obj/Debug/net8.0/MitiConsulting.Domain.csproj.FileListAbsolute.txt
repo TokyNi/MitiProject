@@ -5,6 +5,7 @@
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.AssemblyInfoInputs.cache
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.AssemblyInfo.cs
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.csproj.CoreCompileInputs.cache
+/home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.sourcelink.json
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.dll
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/refint/MitiConsulting.Domain.dll
 /home/tokyniaina/MitiProject/MitiConsulting.Domain/obj/Debug/net8.0/MitiConsulting.Domain.pdb

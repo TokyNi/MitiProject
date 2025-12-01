@@ -27,6 +27,9 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [/home/tokyniaina/MitiProject/MitiConsulting.UI/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/tokyniaina/MitiProject/MitiConsulting.UI/Views/ListeFiche.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/tokyniaina/MitiProject/MitiConsulting.UI/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
