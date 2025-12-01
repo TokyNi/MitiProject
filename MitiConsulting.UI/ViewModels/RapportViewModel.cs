@@ -34,7 +34,7 @@ namespace MitiConsulting.UI.ViewModels
         // Propriétés pour la pagination
         [ObservableProperty] private int currentPage = 1;
         [ObservableProperty] private int totalPages = 1;
-        [ObservableProperty] private int totalItems;
+        [ObservableProperty] private int totalItems ;
         [ObservableProperty] private int pageSize = 10;
         [ObservableProperty] private bool hasPreviousPage;
         [ObservableProperty] private bool hasNextPage;
@@ -91,7 +91,7 @@ namespace MitiConsulting.UI.ViewModels
                 await LireRapportAsync(pageNumber);
                 
                 // Simuler des données pour la pagination (à remplacer par vos vraies données)
-                TotalItems = 25; // Exemple: 25 rapports au total
+                TotalItems = await _service.GetNombreRapportAsync(); // Exemple: 25 rapports au total
                 TotalPages = (int)Math.Ceiling((double)TotalItems / PageSize);
                 
                 UpdatePaginationInfo();

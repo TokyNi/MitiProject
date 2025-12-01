@@ -42,6 +42,10 @@ namespace MitiConsulting.ApplicationCore.Services
         var entity = await _repo.GetRapportByIdAsync(id);
         return entity is null ? null : _mapper.Map<RapportDTO>(entity);
     }
+    public async Task<int> GetNombreRapportAsync(){
+        int nbr = await _repo.GetNombreRapportAsync();
+        return nbr;
+    }
 }
 
 }

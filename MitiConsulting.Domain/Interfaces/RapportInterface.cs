@@ -12,6 +12,7 @@ namespace MitiConsulting.Domain.Interfaces{
         Task <Rapport?> AjoutRapportAsync(Rapport rapport) ;
         Task <Rapport?> ModiferRapportAsync(Rapport rapport);
         Task <Rapport?> GetRapportByIdAsync(int id);
+        Task <int> GetNombreRapportAsync();
         //Recherche (à faire)
     }
 }

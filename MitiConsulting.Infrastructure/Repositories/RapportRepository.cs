@@ -68,5 +68,9 @@ public class RapportService :IRapportRepository
         //retourne la mise à jour
         return _mapper.Map<Rapport>(entityUpdate);
     }
+    public async Task<int> GetNombreRapportAsync(){
+        return await _context.Rapports.CountAsync();
+      
+    }
     
 }

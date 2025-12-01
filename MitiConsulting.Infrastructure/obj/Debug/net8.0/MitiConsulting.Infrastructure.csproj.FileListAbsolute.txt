@@ -10,9 +10,9 @@
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.AssemblyInfoInputs.cache
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.AssemblyInfo.cs
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.csproj.CoreCompileInputs.cache
+/home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.sourcelink.json
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.csproj.CopyComplete
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.dll
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/refint/MitiConsulting.Infrastructure.dll
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.pdb
 /home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/ref/MitiConsulting.Infrastructure.dll
-/home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/obj/Debug/net8.0/MitiConsulting.Infrastructure.sourcelink.json
