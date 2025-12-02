@@ -1,4 +1,4 @@
-/home/tokyniaina/.nuget/packages/automapper/15.1.0/lib/net8.0/AutoMapper.dll
+/home/tokyniaina/.nuget/packages/automapper/12.0.1/lib/netstandard2.1/AutoMapper.dll
 /home/tokyniaina/.nuget/packages/avalonia/11.3.9/ref/net8.0/Avalonia.Base.dll
 /home/tokyniaina/.nuget/packages/avalonia.controls.colorpicker/11.3.9/lib/net8.0/Avalonia.Controls.ColorPicker.dll
 /home/tokyniaina/.nuget/packages/avalonia.controls.datagrid/11.3.9/lib/net8.0/Avalonia.Controls.DataGrid.dll
@@ -28,14 +28,6 @@
 /home/tokyniaina/.nuget/packages/harfbuzzsharp/8.3.1.1/lib/net8.0/HarfBuzzSharp.dll
 /home/tokyniaina/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/8.0.21/ref/net8.0/Microsoft.CSharp.dll
-/home/tokyniaina/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/home/tokyniaina/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
-/home/tokyniaina/.nuget/packages/microsoft.extensions.options/8.0.0/lib/net8.0/Microsoft.Extensions.Options.dll
-/home/tokyniaina/.nuget/packages/microsoft.extensions.primitives/8.0.0/lib/net8.0/Microsoft.Extensions.Primitives.dll
-/home/tokyniaina/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/lib/net8.0/Microsoft.IdentityModel.Abstractions.dll
-/home/tokyniaina/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
-/home/tokyniaina/.nuget/packages/microsoft.identitymodel.logging/8.14.0/lib/net8.0/Microsoft.IdentityModel.Logging.dll
-/home/tokyniaina/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/lib/net8.0/Microsoft.IdentityModel.Tokens.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/8.0.21/ref/net8.0/Microsoft.VisualBasic.Core.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/8.0.21/ref/net8.0/Microsoft.VisualBasic.dll
 /usr/lib/dotnet/packs/Microsoft.NETCore.App.Ref/8.0.21/ref/net8.0/Microsoft.Win32.Primitives.dll

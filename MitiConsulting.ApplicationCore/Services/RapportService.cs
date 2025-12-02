@@ -4,6 +4,7 @@ using MitiConsulting.ApplicationCore.DTOs;
 using MitiConsulting.Domain.Models;
 using MitiConsulting.Domain.Interfaces;
 
+
 namespace MitiConsulting.ApplicationCore.Services
 {
   public class RapportService 
@@ -17,24 +18,24 @@ namespace MitiConsulting.ApplicationCore.Services
         _mapper = mapper;
     }
 
-    public async Task<List<ListeRapportDTO>> GetRapportsAsync(int pageNum)
+    public async Task<IReadOnlyList<ListeDTO>> GetRapportsAsync(int pageNum)
     {
         var result = await _repo.GetRapportAsync(pageNum);
-        return _mapper.Map<List<ListeRapportDTO>>(result);
+        return _mapper.Map<IReadOnlyList<ListeDTO>>(result);
     }
 
     public async Task<RapportDTO> AjouterRapportAsync(CreatRapportDTO dto)
     {
         var entity = _mapper.Map<Rapport>(dto);
-        var created = await _repo.AjoutRapportAsync(entity);
-        return _mapper.Map<RapportDTO>(created);
+        await _repo.AjoutRapportAsync(entity);
+        return _mapper.Map<RapportDTO>(entity);
     }
 
     public async Task<RapportDTO?> ModifierRapportAsync(UpdateRapportDTO dto)
     {
         var entity = _mapper.Map<Rapport>(dto);
-        var updated = await _repo.ModiferRapportAsync(entity);
-        return updated is null ? null : _mapper.Map<RapportDTO>(updated);
+        await _repo.ModiferRapportAsync(entity);
+        return entity is null ? null : _mapper.Map<RapportDTO>(entity);
     }
 
     public async Task<RapportDTO?> GetRapportByIdAsync(int id)

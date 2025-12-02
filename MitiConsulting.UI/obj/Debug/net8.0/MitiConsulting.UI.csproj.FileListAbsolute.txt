@@ -32,14 +32,6 @@
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/CommunityToolkit.Mvvm.dll
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/HarfBuzzSharp.dll
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/MicroCom.Runtime.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
-/home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/SkiaSharp.dll
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/System.IO.Pipelines.dll
 /home/tokyniaina/MitiProject/MitiConsulting.UI/bin/Debug/net8.0/Tmds.DBus.Protocol.dll

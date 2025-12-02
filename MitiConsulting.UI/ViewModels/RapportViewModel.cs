@@ -8,12 +8,13 @@ using System.Linq;
 
 using MitiConsulting.ApplicationCore.DTOs;
 using MitiConsulting.ApplicationCore.Services;
+using MitiConsulting.Domain.Interfaces;
 
 namespace MitiConsulting.UI.ViewModels
 {
     public partial class RapportViewModel : ObservableObject
     {
-        public ObservableCollection<ListeRapportDTO> ListeRapport { get; } = new ObservableCollection<ListeRapportDTO>();
+        public ObservableCollection<ListeDTO> ListeRapport { get; } = new ObservableCollection<ListeDTO>();
         public ObservableCollection<PageNumberViewModel> PageNumbers { get; } = new ObservableCollection<PageNumberViewModel>();
 
         public AsyncRelayCommand<int> LireRapport { get; } 
@@ -91,7 +92,7 @@ namespace MitiConsulting.UI.ViewModels
                 await LireRapportAsync(pageNumber);
                 
                 // Simuler des données pour la pagination (à remplacer par vos vraies données)
-                TotalItems = await _service.GetNombreRapportAsync(); // Exemple: 25 rapports au total
+                TotalItems = await _service!.GetNombreRapportAsync(); // Exemple: 25 rapports au total
                 TotalPages = (int)Math.Ceiling((double)TotalItems / PageSize);
                 
                 UpdatePaginationInfo();
