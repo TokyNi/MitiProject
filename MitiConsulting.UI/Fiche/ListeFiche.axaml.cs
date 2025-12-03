@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using MitiConsulting.UI.ViewModels;
+using MitiConsulting.UI.Fiches.ViewModels;
 using System.Threading.Tasks;
 
 namespace MitiConsulting.UI.Views
@@ -33,7 +33,7 @@ namespace MitiConsulting.UI.Views
             this.AttachedToVisualTree -= OnAttachedToVisualTree;
 
             // Le DataContext devrait être votre RapportViewModel
-            if (DataContext is RapportViewModel viewModel)
+            if (DataContext is RapportsListViewModel viewModel)
             {
                 // Exécute la commande ChargerRapport pour peupler la liste initialement vide
                 if (viewModel.ChargerRapport?.CanExecute(null) == true)

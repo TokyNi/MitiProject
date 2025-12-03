@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MitiConsulting.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97443587a2292b793436083aa26c39f6e6a7363e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42b64144569a4be43f5ee8518f87830691e2b843")]
 [assembly: System.Reflection.AssemblyProductAttribute("MitiConsulting.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MitiConsulting.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

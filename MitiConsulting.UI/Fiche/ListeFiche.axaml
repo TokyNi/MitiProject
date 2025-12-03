@@ -1,8 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:MitiConsulting.UI.ViewModels"
+             xmlns:vm="clr-namespace:MitiConsulting.UI.Fiches.ViewModels"
              x:Class="MitiConsulting.UI.Views.ListeFiche"
-             x:DataType="vm:RapportViewModel"
+             x:DataType="vm:RapportsListViewModel"
              >
     
     <Design.DataContext>
@@ -32,7 +32,6 @@
             <Button Grid.Column="1"
                     Classes="primary-btn"
                     Content="+ Créer Fiche"
-                    Command="{Binding AjouterRapport}"
                     HorizontalAlignment="Right"/>
         </Grid>
         

@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:MitiConsulting.UI.ViewModels"  
+             xmlns:vm="clr-namespace:MitiConsulting.UI.Fiches.ViewModels"  
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
              x:Class="MitiConsulting.UI.Views.MissionReportView"
-             x:DataType="vm:RapportViewModel"
+             x:DataType="vm:RapportFormViewModel"
              Background="White">
 
     <ScrollViewer>
@@ -166,7 +166,7 @@
                     
                     <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
 
-                    <TextBlock Text="Sources de financement" Classes="SectionHeader"/>
+                    <TextBlock Text="Ressources et financement" Classes="SectionHeader"/>
                     
                     <StackPanel Spacing="15">
                         <StackPanel>
@@ -195,6 +195,29 @@
                                 <TextBox Watermark="Ex:Unicef" Text="{Binding NomAssocie}"/>
                             </StackPanel>
                         </Grid>
+
+                        <Grid ColumnDefinitions="*, 20, *" ColumnSpacing="20">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="9. Source de financement" Classes="FieldLabel"/>
+                                <TextBox Watermark="Ex:Unicef" Text="{Binding Financement}"/>
+                                
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="15. Montant" Classes="FieldLabel"/>
+                                 <NumericUpDown Watermark="Ex:10000" Value="{Binding Montant}" FormatString="0">
+                                <NumericUpDown.Styles>
+                                    <Style Selector="NumericUpDown">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                        <Setter Property="BorderBrush" Value="#757575"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                        <Setter Property="Foreground" Value="#424242"/>
+                                    </Style>
+                                </NumericUpDown.Styles>
+                            </NumericUpDown>
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
 
                     <Separator Margin="0,30,0,10" Background="{StaticResource DarkGrayBorder}"/>
@@ -217,13 +240,13 @@
 
                     <StackPanel Margin="0,30,0,0" HorizontalAlignment="Center" Spacing="15">
                         <!-- Bouton Soumettre -->
-                       <Grid Margin="0,30,0,0" HorizontalAlignment="Stretch">
+                <Grid Margin="0,30,0,0" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                            </Grid.ColumnDefinitions>   
     
                     <!-- Bouton Soumettre -->
                     <Button Grid.Column="0"
