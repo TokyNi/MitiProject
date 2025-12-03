@@ -4,44 +4,40 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using AutoMapper;
-using System.Linq;
-
 using MitiConsulting.ApplicationCore.DTOs;
-using MitiConsulting.ApplicationCore.Services;
+using MitiConsulting.ApplicationCore.Interfaces;
 using MitiConsulting.Domain.Interfaces;
 
 namespace MitiConsulting.UI.ViewModels
 {
     public partial class RapportViewModel : ObservableObject
     {
-        public ObservableCollection<ListeDTO> ListeRapport { get; } = new ObservableCollection<ListeDTO>();
-        public ObservableCollection<PageNumberViewModel> PageNumbers { get; } = new ObservableCollection<PageNumberViewModel>();
+        public ObservableCollection<ListeDTO> ListeRapport { get; } = new();
+        public ObservableCollection<PageNumberViewModel> PageNumbers { get; } = new();
 
-        public AsyncRelayCommand<int> LireRapport { get; } 
-        public AsyncRelayCommand AjouterRapport { get; } 
-        public AsyncRelayCommand ModifierRapport { get; } 
-        public AsyncRelayCommand ChargerRapport { get; } 
-        public AsyncRelayCommand<int> GoToPageCommand { get; }
-        public AsyncRelayCommand PreviousPageCommand { get; }
-        public AsyncRelayCommand NextPageCommand { get; }
-        
-        private readonly RapportService? _service;
-        private readonly IMapper? _mapper;
+        public IAsyncRelayCommand<int> LireRapport { get; }
+        public IAsyncRelayCommand AjouterRapport { get; }
+        public IAsyncRelayCommand ModifierRapport { get; }
+        public IAsyncRelayCommand ChargerRapport { get; }
+        public IAsyncRelayCommand<int> GoToPageCommand { get; }
+        public IAsyncRelayCommand PreviousPageCommand { get; }
+        public IAsyncRelayCommand NextPageCommand { get; }
 
-        // Rapport affiché dans la View
+        private readonly IRapportService _service;
+        private readonly IMapper _mapper;
+
         [ObservableProperty] private RapportDTO? rapportDto;
         [ObservableProperty] private UpdateRapportDTO? updateRapportDto;
 
-        // Propriétés pour la pagination
         [ObservableProperty] private int currentPage = 1;
         [ObservableProperty] private int totalPages = 1;
-        [ObservableProperty] private int totalItems ;
+        [ObservableProperty] private int totalItems;
         [ObservableProperty] private int pageSize = 10;
         [ObservableProperty] private bool hasPreviousPage;
         [ObservableProperty] private bool hasNextPage;
         [ObservableProperty] private string paginationInfo = string.Empty;
 
-        // Attributs
+        // Champs du rapport
         [ObservableProperty] private int idRapport;
         [ObservableProperty] private string nomClient = string.Empty;
         [ObservableProperty] private string adresse = string.Empty;
@@ -61,21 +57,22 @@ namespace MitiConsulting.UI.ViewModels
         [ObservableProperty] private string descriptifProjet = string.Empty;
         [ObservableProperty] private string descriptionServices = string.Empty;
 
-        public RapportViewModel(RapportService service, IMapper mapper)
+        public RapportViewModel(IRapportService service, IMapper mapper, bool skipLoad = false)
         {
             _service = service;
             _mapper = mapper;
-            
+
             LireRapport = new AsyncRelayCommand<int>(LireRapportAsync);
             AjouterRapport = new AsyncRelayCommand(AjoutRapportAsync);
             ModifierRapport = new AsyncRelayCommand(UpdateRapportAsync);
             ChargerRapport = new AsyncRelayCommand(ChargerRapportsAsync);
             GoToPageCommand = new AsyncRelayCommand<int>(GoToPageAsync);
-            PreviousPageCommand = new AsyncRelayCommand(PreviousPageAsync, () => HasPreviousPage);
-            NextPageCommand = new AsyncRelayCommand(NextPageAsync, () => HasNextPage);
-            
-            // Charger la première page au démarrage
-            _ = ChargerRapportsAsync();
+
+            PreviousPageCommand = new AsyncRelayCommand(PreviousPageAsync);
+            NextPageCommand = new AsyncRelayCommand(NextPageAsync);
+
+            if (!skipLoad)
+                _ = ChargerRapportsAsync();
         }
 
         private async Task ChargerRapportsAsync()
@@ -85,150 +82,95 @@ namespace MitiConsulting.UI.ViewModels
 
         private async Task GoToPageAsync(int pageNumber)
         {
-            try
-            {
-                // Pour l'exemple, nous allons simuler la pagination avec votre méthode existante
-                // Vous devrez adapter cela selon votre implémentation réelle
-                await LireRapportAsync(pageNumber);
-                
-                // Simuler des données pour la pagination (à remplacer par vos vraies données)
-                TotalItems = await _service!.GetNombreRapportAsync(); // Exemple: 25 rapports au total
-                TotalPages = (int)Math.Ceiling((double)TotalItems / PageSize);
-                
-                UpdatePaginationInfo();
-                UpdatePageNumbers();
-                UpdateNavigationButtons();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erreur lors du chargement des rapports: {ex.Message}");
-            }
-        }
+            await LireRapportAsync(pageNumber);
 
-        private async Task PreviousPageAsync()
-        {
-            if (HasPreviousPage)
-            {
-                await GoToPageAsync(CurrentPage - 1);
-            }
-        }
+            TotalItems = await _service.GetNombreRapportAsync();
+            TotalPages = (int)Math.Ceiling((double)TotalItems / PageSize);
 
-        private async Task NextPageAsync()
-        {
-            if (HasNextPage)
-            {
-                await GoToPageAsync(CurrentPage + 1);
-            }
+            UpdatePaginationInfo();
+            UpdatePageNumbers();
+            UpdateNavigationButtons();
         }
 
         private void UpdatePaginationInfo()
         {
-            int startIndex = ((CurrentPage - 1) * PageSize) + 1;
-            int endIndex = Math.Min(CurrentPage * PageSize, TotalItems);
-            
-            PaginationInfo = $"Affichage de {startIndex} à {endIndex} sur {TotalItems} rapports";
+            int start = ((CurrentPage - 1) * PageSize) + 1;
+            int end = Math.Min(CurrentPage * PageSize, TotalItems);
+            PaginationInfo = $"Affichage de {start} à {end} sur {TotalItems} rapports";
         }
 
         private void UpdatePageNumbers()
         {
             PageNumbers.Clear();
-            
-            // Afficher maximum 5 numéros de page autour de la page courante
-            int startPage = Math.Max(1, CurrentPage - 2);
-            int endPage = Math.Min(TotalPages, CurrentPage + 2);
-            
-            // Ajouter la première page si nécessaire
-            if (startPage > 1)
-            {
-                PageNumbers.Add(new PageNumberViewModel(1, CurrentPage == 1));
-                if (startPage > 2)
-                {
-                    PageNumbers.Add(new PageNumberViewModel(-1, false));
-                }
-            }
-            
-            // Ajouter les pages autour de la page courante
-            for (int i = startPage; i <= endPage; i++)
-            {
+
+            int start = Math.Max(1, CurrentPage - 2);
+            int end = Math.Min(TotalPages, CurrentPage + 2);
+
+            for (int i = start; i <= end; i++)
                 PageNumbers.Add(new PageNumberViewModel(i, i == CurrentPage));
-            }
-            
-            // Ajouter la dernière page si nécessaire
-            if (endPage < TotalPages)
-            {
-                if (endPage < TotalPages - 1)
-                {
-                    PageNumbers.Add(new PageNumberViewModel(-2, false));
-                }
-                PageNumbers.Add(new PageNumberViewModel(TotalPages, TotalPages == CurrentPage));
-            }
         }
 
         private void UpdateNavigationButtons()
         {
             HasPreviousPage = CurrentPage > 1;
             HasNextPage = CurrentPage < TotalPages;
-            
+
             PreviousPageCommand.NotifyCanExecuteChanged();
             NextPageCommand.NotifyCanExecuteChanged();
         }
 
+        // ---- FIX : METHODES MANQUANTES ----
+
+        private async Task PreviousPageAsync()
+        {
+            if (HasPreviousPage)
+                await GoToPageAsync(CurrentPage - 1);
+        }
+
+        private async Task NextPageAsync()
+        {
+            if (HasNextPage)
+                await GoToPageAsync(CurrentPage + 1);
+        }
+
+        // ---- CRUD ----
+
         public async Task LireRapportAsync(int pageNum)
         {
-            if (_service == null) return;
-            
             var liste = await _service.GetRapportsAsync(pageNum);
+
             ListeRapport.Clear();
             foreach (var l in liste)
                 ListeRapport.Add(l);
-            
+
             CurrentPage = pageNum;
         }
 
-        // public async Task ModifierRapportAsync(int id)
-        // {
-        //     // Implémentez la logique de modification
-        //     // Exemple: navigation vers un formulaire d'édition
-        // }
-
         public async Task AjoutRapportAsync()
         {
-            if (_service == null || _mapper == null) return;
-            
-            var createDto = _mapper.Map<CreatRapportDTO>(this);
-            RapportDto = await _service.AjouterRapportAsync(createDto);
+            var dto = _mapper.Map<CreatRapportDTO>(this);
+            RapportDto = await _service.AjouterRapportAsync(dto);
         }
 
         public async Task UpdateRapportAsync()
         {
-            if (_service == null || _mapper == null) return;
-            
             var dto = _mapper.Map<UpdateRapportDTO>(this);
             RapportDto = await _service.ModifierRapportAsync(dto);
         }
 
         public async Task GetRapportByIdAsync()
         {
-            if (_service == null) return;
-            
-            var id = this.IdRapport;
-            RapportDto = await _service.GetRapportByIdAsync(id);
+            RapportDto = await _service.GetRapportByIdAsync(IdRapport);
         }
     }
 
-    // Classe pour représenter un numéro de page dans la pagination
     public class PageNumberViewModel : ObservableObject
     {
         public int Number { get; }
         public bool IsCurrentPage { get; }
-        
-        public string DisplayText => Number switch
-        {
-            -1 => "...",
-            -2 => "...",
-            _ => Number.ToString()
-        };
-        
+
+        public string DisplayText => Number <= 0 ? "..." : Number.ToString();
+
         public PageNumberViewModel(int number, bool isCurrentPage)
         {
             Number = number;

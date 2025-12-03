@@ -3,11 +3,12 @@ using MitiConsulting.ApplicationCore.DTOs;
 // using MitiConsulting.ApplicationCore.Interfaces;
 using MitiConsulting.Domain.Models;
 using MitiConsulting.Domain.Interfaces;
+using MitiConsulting.ApplicationCore.Interfaces;
 
 
 namespace MitiConsulting.ApplicationCore.Services
 {
-  public class RapportService 
+  public class RapportService : IRapportService
 {
     private readonly IRapportRepository _repo;
     private readonly IMapper _mapper;

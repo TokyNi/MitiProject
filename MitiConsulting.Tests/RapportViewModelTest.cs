@@ -1,45 +1,51 @@
-using Xunit;
+// using Xunit;
 using Moq;
 using AutoMapper;
+using MitiConsulting.ApplicationCore.DTOs;
+using MitiConsulting.ApplicationCore.Interfaces;
+using MitiConsulting.Domain.Interfaces;
+using MitiConsulting.UI.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MitiConsulting.UI.ViewModels;
-using MitiConsulting.ApplicationCore.DTOs;
-using MitiConsulting.ApplicationCore.Services;
-using MitiConsulting.Domain.Interfaces;
 
-public class RapportViewModelTest
+public class RapportViewModelTests
 {
-    [Fact]
-    public async Task LireRapportAsync_Should_Fill_ListeRapport()
+    private RapportViewModel CreateViewModel(
+        Mock<IRapportService> mockService,
+        bool skipLoad = true)
     {
-        // Arrange
-        var mockService = new Mock<RapportService>(null, null);
         var mockMapper = new Mock<IMapper>();
+        return new RapportViewModel(mockService.Object, mockMapper.Object, skipLoad);
+    }
 
-        // Fake données retournées par le service
-        var fakeRapports = new List<ListeDTO>
-        {
-            new ListeDTO (1,"Rapport A" ,2025),
-            new ListeDTO (2,"Rapport B",2004)
-        };
+    [Fact]
+    public async Task GoToPageAsync_Should_LoadData_And_UpdatePagination()
+    {
+        // ARRANGE
+        var mockService = new Mock<IRapportService>();
 
-        mockService.Setup(s => s.GetRapportsAsync(1))
-                   .ReturnsAsync(fakeRapports);
+        mockService.Setup(s => s.GetRapportsAsync(2))
+            .ReturnsAsync(new List<ListeDTO>
+            {
+                new ListeDTO(1,"R1",2020),
+                new ListeDTO(2,"R2",2021)
+            });
 
         mockService.Setup(s => s.GetNombreRapportAsync())
-                   .ReturnsAsync(2);
+            .ReturnsAsync(25); // totalItems
 
-        // IMPORTANT : empêcher le constructeur d'appeler ChargerRapportsAsync()
-        var vm = new RapportViewModel(mockService.Object, mockMapper.Object);
+        var vm = CreateViewModel(mockService);
 
-        // Act
-        await vm.LireRapportAsync(1);
+        // ACT
+        await vm.GoToPageCommand.ExecuteAsync(2);
 
-        // Assert
-        Assert.NotEmpty(vm.ListeRapport);
+        // ASSERT
+        Assert.Equal(2, vm.CurrentPage);
+        Assert.Equal(25, vm.TotalItems);
+        Assert.Equal(3, vm.TotalPages);   // 25 / 10 = 3 pages
         Assert.Equal(2, vm.ListeRapport.Count);
-        Assert.Equal("Client A", vm.ListeRapport[0].NomRapport);
-        Assert.Equal("Client B", vm.ListeRapport[1].NomRapport);
+        Assert.Equal("R1", vm.ListeRapport[0].NomRapport);
+        Assert.False(vm.HasPreviousPage == false); // Page 2 → HasPrevious = TRUE
+        Assert.True(vm.HasNextPage);               // Page 2 < 3 → TRUE
     }
 }
