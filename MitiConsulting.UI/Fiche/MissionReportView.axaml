@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
              x:Class="MitiConsulting.UI.Views.MissionReportView"
              x:DataType="vm:RapportFormViewModel"
-             Background="White">
+             >
 
     <ScrollViewer>
         <!-- Grid avec une colonne centrée pour simuler le 90% -->

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MitiConsulting.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42b64144569a4be43f5ee8518f87830691e2b843")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8323b22ca240d90b0f26613f398094d542088a47")]
 [assembly: System.Reflection.AssemblyProductAttribute("MitiConsulting.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MitiConsulting.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

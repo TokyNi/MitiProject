@@ -48,7 +48,7 @@ public class RapportFormViewModelTests
         // ACT
         await vm.AjoutRapportAsync();
 
-        // ASSERT
+        // ASSERT                                                                                       
         Assert.NotNull(vm.RapportDto);
         Assert.Equal(expectedDto.IdRapport, vm.RapportDto.IdRapport);
         Assert.Equal(expectedDto.NomRapport, vm.RapportDto.NomRapport);

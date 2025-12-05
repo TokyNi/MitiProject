@@ -1,19 +1,59 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:views="clr-namespace:MitiConsulting.UI.Views"
-        x:Class="MitiConsulting.UI.Views.MainWindow" 
-        Title="MitiConsulting.UI"
+        xmlns:vm="using:MitiConsulting.UI.Main"
+        xmlns:views="using:MitiConsulting.UI.Views"
+        xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+        xmlns:fichesvmodels="clr-namespace:MitiConsulting.UI.Fiches.ViewModels"
+        xmlns:fichesviews="clr-namespace:MitiConsulting.UI.Views"
+        x:DataType="vm:MainViewModel"
+        x:Class="MitiConsulting.UI.Views.MainWindow"
+        Title="MitiConsulting - Gestion des Fiches"
+        Width="1200" Height="800"
         >
     
-    <Window.Resources> 
-        <Thickness x:Key="SectionMargin">0,30,0,15</Thickness>
-    </Window.Resources>
-    
-    <Window.Styles>
-        <Style Selector="TextBlock.SectionHeader">
-            <Setter Property="FontSize" Value="20"/>
-            </Style>
-    </Window.Styles>
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
 
-    <views:MissionReportView/> 
+   <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="White">
+            <StackPanel Margin="15,20,15,10" Spacing="5">
+                
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,25">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="MI.TI Consulting" Margin="0,0,20,0"  FontSize="16" FontWeight="SemiBold" Foreground="#333333"/>
+                        <TextBlock Text="Gestion des Fiches v1.0" FontSize="11" Foreground="#999999"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <Button Classes="MenuItemButton" Command="{Binding GoToRapportsList}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <!-- <TextBlock Text="☰" Margin="0,0,20,0" VerticalAlignment="Center" FontSize="16"/> -->
+                            <TextBlock Text=" ☰ Liste Fiches" Margin="0,0,20,0" VerticalAlignment="Center" FontSize="16"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                
+                <Button Classes="MenuItemButton" Command="{Binding GoToRapportForm}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <!-- <TextBlock Text="➕" Margin="0,0,20,0" VerticalAlignment="Center" FontSize="16"/> -->
+                            <TextBlock Text="➕ Ajouter Fiche" Margin="0,0,20,0" VerticalAlignment="Center" FontSize="16"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Background="#ecf0f1">
+            <ContentControl Content="{Binding CurrentPage}" />
+        </Border>
+    </Grid>
 </Window>

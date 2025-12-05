@@ -3,47 +3,36 @@
              xmlns:vm="clr-namespace:MitiConsulting.UI.Fiches.ViewModels"
              x:Class="MitiConsulting.UI.Views.ListeFiche"
              x:DataType="vm:RapportsListViewModel"
-             >
+            >
     
     <Design.DataContext>
-        <vm:RapportViewModel />
+        <vm:RapportsListViewModel /> 
     </Design.DataContext>
     
-    <!-- Styles -->
-
-    
-    <!-- Contenu principal avec fond blanc -->
     <Grid  RowDefinitions="Auto,*,Auto" Margin="24,32">
         
-        <!-- Titre et bouton -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <!-- Titre -->
             <TextBlock Grid.Column="0"
                        Classes="header-title"
                        Text="Fiche de projet"
                        VerticalAlignment="Center"/>
             
-            <!-- Bouton Créer -->
             <Button Grid.Column="1"
                     Classes="primary-btn"
                     Content="+ Créer Fiche"
                     HorizontalAlignment="Right"/>
         </Grid>
         
-        <!-- Tableau des rapports -->
         <Border Grid.Row="1" Classes="table-card" Margin="0,0,0,32">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <RowDefinition Height="*"/>    </Grid.RowDefinitions>
                 
-                <!-- En-tête du tableau -->
                 <Border Grid.Row="0" Classes="table-header">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -79,7 +68,6 @@
                     </Grid>
                 </Border>
                 
-                <!-- Liste des rapports -->
                 <ScrollViewer Grid.Row="1" Background="White">
                     <ItemsControl ItemsSource="{Binding ListeRapport}">
                         <ItemsControl.ItemTemplate>
@@ -93,34 +81,29 @@
                                             <ColumnDefinition Width="150"/>
                                         </Grid.ColumnDefinitions>
                                         
-                                        <!-- ID du rapport -->
                                         <TextBlock Grid.Column="0" 
                                                    Classes="table-cell"
                                                    Text="{Binding IdRapport}"
                                                    VerticalAlignment="Center" 
                                                    Margin="20,0,0,0"/>
                                         
-                                        <!-- Année -->
                                         <TextBlock Grid.Column="1" 
                                                    Classes="year-cell"
                                                    Text="{Binding AnneeDebut}"
                                                    VerticalAlignment="Center" 
                                                    Margin="20,0,0,0"/>
                                         
-                                        <!-- Nom du Consultant -->
                                         <TextBlock Grid.Column="2" 
                                                    Classes="table-cell"
                                                    Text="{Binding NomRapport}"
                                                    VerticalAlignment="Center" 
                                                    Margin="20,0,0,0"/>
                                         
-                                        <!-- Boutons d'action -->
                                         <StackPanel Grid.Column="3" 
                                                     Orientation="Horizontal" 
                                                     Spacing="10"
                                                     VerticalAlignment="Center"
                                                     Margin="20,0,0,0">
-                                            <!-- Espace réservé pour les boutons -->
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -131,7 +114,6 @@
             </Grid>
         </Border>
         
-        <!-- Pagination -->
         <Grid Grid.Row="2" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -139,45 +121,40 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <!-- Info de pagination -->
             <TextBlock Grid.Column="0" 
                        Classes="pagination-info"
                        Text="{Binding PaginationInfo}" 
                        VerticalAlignment="Center"
                        Margin="0,0,24,0"/>
             
-            <!-- Contrôles de pagination -->
-            <StackPanel Grid.Column="2" 
+         <StackPanel Grid.Column="2" 
                         Orientation="Horizontal" 
                         Spacing="8"
                         HorizontalAlignment="Right">
                 
-                <!-- Bouton Précédent -->
                 <Button Classes="page-btn"
                         Content="‹ Précédent"
                         Command="{Binding PreviousPageCommand}"/>
                 
-                <!-- Pages fixes -->
-                <Button Classes="page-btn"
+                <!-- <Button Classes="page-btn"
                         Content="1" 
                         Command="{Binding GoToPageCommand}"
                         CommandParameter="1"/>
                         
                 <Button Classes="page-btn"
-                        Content="2" 
+                           Content="2" 
                         Command="{Binding GoToPageCommand}"
                         CommandParameter="2"/>
                         
                 <Button Classes="page-btn"
                         Content="3" 
                         Command="{Binding GoToPageCommand}"
-                        CommandParameter="3"/>
+                        CommandParameter="3"/> -->
                 
-                <!-- Bouton Suivant -->
                 <Button Classes="page-btn"
                         Content="Suivant ›"
                         Command="{Binding NextPageCommand}"/>
-            </StackPanel>
+            </StackPanel> 
         </Grid>
     </Grid>
 </UserControl>

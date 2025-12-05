@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PLa6qP9mkHZKxdSzhHHSiFV7TbRXUsIlR8YSiCwU6KSEezlx+pAGoEmawW+u0yfPJ9xCSDUqCunmFGjlO/SdGA==",
+  "dgSpecHash": "J93v5RhgkCPA23KSkhWxsmD9l+UiuBEfNq4EJnuEDgkOuDRZqSwOVeU2UE0IY4a3JmJJYw9b+eA7eGUKjqYs2g==",
   "success": true,
   "projectFilePath": "/home/tokyniaina/MitiProject/MitiConsulting.Infrastructure/MitiConsulting.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "/home/tokyniaina/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0/microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.0/microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.entityframeworkcore.sqlserver/8.0.0/microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512",
+    "/home/tokyniaina/.nuget/packages/microsoft.entityframeworkcore.tools/10.0.0/microsoft.entityframeworkcore.tools.10.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

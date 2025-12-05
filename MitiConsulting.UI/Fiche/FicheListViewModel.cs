@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using AutoMapper;
-using MitiConsulting.ApplicationCore.DTOs;
 using MitiConsulting.ApplicationCore.Interfaces;
 using MitiConsulting.Domain.Interfaces;
 
@@ -114,17 +113,15 @@ namespace MitiConsulting.UI.Fiches.ViewModels
         }
     }
 }
-    public class PageNumberViewModel : ObservableObject
+public class PageNumberViewModel : ObservableObject
+{
+    public int Number { get; }
+    public bool IsCurrentPage { get; }
+    public string DisplayText => Number <= 0 ? "..." : Number.ToString();
+    public PageNumberViewModel(int number, bool isCurrentPage)
     {
-        public int Number { get; }
-        public bool IsCurrentPage { get; }
-
-        public string DisplayText => Number <= 0 ? "..." : Number.ToString();
-
-        public PageNumberViewModel(int number, bool isCurrentPage)
-        {
-            Number = number;
-            IsCurrentPage = isCurrentPage;
-        }
+        Number = number;
+        IsCurrentPage = isCurrentPage;
     }
+}
 

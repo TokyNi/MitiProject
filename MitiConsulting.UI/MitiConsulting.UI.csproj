@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Avalonia" Version="11.3.9" />
     <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.9" />
     <PackageReference Include="Avalonia.Desktop" Version="11.3.9" />
@@ -20,6 +21,7 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
    
   </ItemGroup>
 
@@ -27,5 +29,6 @@
     <!-- <ProjectReference Include="..\MitiConsulting.ApplicationCore\MitiConsulting.ApplicationCore.csproj" /> -->
     <ProjectReference Include="..\MitiConsulting.Domain\MitiConsulting.Domain.csproj" />
     <ProjectReference Include="..\MitiConsulting.ApplicationCore\MitiConsulting.ApplicationCore.csproj" />
+    <ProjectReference Include="..\MitiConsulting.Infrastructure\MitiConsulting.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

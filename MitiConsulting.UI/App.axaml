@@ -1,8 +1,33 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="MitiConsulting.UI.App"
+             xmlns:main="clr-namespace:MitiConsulting.UI.Views"
+             xmlns:mainvmodel="clr-namespace:MitiConsulting.UI.Main"
+             
+             xmlns:fichesvmodels="clr-namespace:MitiConsulting.UI.Fiches.ViewModels"
+             xmlns:fichesviews="clr-namespace:MitiConsulting.UI.Views"
+             
              RequestedThemeVariant="Light">
-     <Application.Resources>
+
+    <Application.DataTemplates>
+
+        <!-- 1. Main (Déjà existant) -->
+        <DataTemplate DataType="{x:Type mainvmodel:MainViewModel}">
+            <main:MainWindow />
+        </DataTemplate>
+        
+        <!-- 2. RAPPORTS LISTE (Le DataTemplate Manquant) -->
+        <DataTemplate DataType="{x:Type fichesvmodels:RapportsListViewModel}">
+            <fichesviews:ListeFiche />
+        </DataTemplate>
+
+        <!-- 3. RAPPORT FORMULAIRE (Le DataTemplate Manquant) -->
+        <DataTemplate DataType="{x:Type fichesvmodels:RapportFormViewModel}">
+            <fichesviews:MissionReportView />
+        </DataTemplate>
+
+    </Application.DataTemplates>
+    <Application.Resources>
         <!-- Ressources déplacées depuis UserControl.Resources -->
         <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
         <SolidColorBrush x:Key="DarkGrayBorder" Color="#757575"/>
@@ -15,12 +40,38 @@
         <Thickness x:Key="SectionMargin">0,30,0,15</Thickness>
     </Application.Resources>
     <Application.Styles>
-        <!-- 1. Thème de base d'Avalonia -->
         <FluentTheme />
         
         <!-- 2. Styles personnalisés : Encapsulés dans le tag <Styles> -->
         <Styles>
-            <!-- Style Liste -->
+            <!-- Dashboard style -->
+            <Style Selector="Button.MenuItemButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#555555"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="Padding" Value="15,0,0,0"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+            <Style Selector="Button.MenuItemButton:pointerover">
+                <Setter Property="Background" Value="#f0f0f0"/>
+                <Setter Property="Foreground" Value="#333333"/>
+            </Style>
+
+            <Style Selector="Button.MenuItemButton.Selected">
+                <Setter Property="Background" Value="#e0f0ff"/>
+                <Setter Property="Foreground" Value="#007acc"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            
+            <Style Selector="Button.MenuItemButton PathIcon">
+                <Setter Property="Width" Value="16"/>
+                <Setter Property="Height" Value="16"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
             <!-- TEXT BLOCK STYLES -->
             <Style Selector="TextBlock.header-title">
                 <Setter Property="FontSize" Value="26"/>
@@ -40,14 +91,11 @@
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
-            
-            <!-- IMPORTANT: Ciblez le ContentPresenter pour garantir la couleur de fond 
-                 par-dessus le thème Fluent, en utilisant une syntaxe plus spécifique si nécessaire. -->
+
             <Style Selector="Button.primary-btn /template/ ContentPresenter">
                 <Setter Property="Background" Value="#1976D2"/>
                 <Setter Property="BorderBrush" Value="#1976D2"/>
                 <Setter Property="Foreground" Value="White"/>
-
             </Style>
 
             <Style Selector="Button.primary-btn:hover /template/ ContentPresenter">
@@ -232,4 +280,5 @@
     
         </Styles>
     </Application.Styles>
+    
 </Application>

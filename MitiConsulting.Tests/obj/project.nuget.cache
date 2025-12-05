@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UZniJL0xzh15j8DMPoYPanMcg3jn08A1jRAy4xmvytpC1HdvUjqIao3QOY11eoumH/oti79hGRC68a8xqVKdcQ==",
+  "dgSpecHash": "bC/vHKRdaact6d45c3uuycxvX6MnjUDLLMcCa3JtJ/rZ4PO3W9D4kUwDl+Tu5DICsJexAeQtEHAOgBBHvIEGBw==",
   "success": true,
   "projectFilePath": "/home/tokyniaina/MitiProject/MitiConsulting.Tests/MitiConsulting.Tests.csproj",
   "expectedPackageFiles": [
@@ -47,8 +47,8 @@
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
-    "/home/tokyniaina/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/home/tokyniaina/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/tokyniaina/.nuget/packages/microsoft.extensions.dependencyinjection/10.0.0/microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
+    "/home/tokyniaina/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/home/tokyniaina/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
